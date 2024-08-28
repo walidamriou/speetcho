@@ -171,6 +171,14 @@
         .slider-container input[type="range"]:hover::-moz-range-thumb {
             background-color: #0056b3;
         }
+        .checkbox-container {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .checkbox-container label {
+            display: inline-block;
+            margin-right: 10px;
+        }
         footer {
             padding: 4%;
             background-color: #000; 
@@ -227,91 +235,14 @@
         <input type="range" id="volume-slider" min="0" max="1" value="1" step="0.1">
     </div>
     
+    <div class="checkbox-container">
+        <label for="char-by-char">Speak Character by Character:</label>
+        <input type="checkbox" id="char-by-char">
+    </div>
+    
     <button onclick="speakText()">Speak</button>
 </div>
 </section>
-
-<script>
-    const voiceSelect = document.getElementById('voice-select');
-    let voices = [];
-
-    function loadVoices() {
-        const selectedLanguage = document.getElementById('language-select').value;
-
-        voices = window.speechSynthesis.getVoices();
-
-        // Clear existing options to prevent duplication
-        voiceSelect.innerHTML = '<option value="">Select a Voice</option>';
-
-        // Create a Set to track unique voice names
-        const uniqueVoices = new Set();
-
-        // Filter voices for the selected language and add unique ones to the dropdown
-        voices.forEach(voice => {
-            if (voice.lang === selectedLanguage && !uniqueVoices.has(voice.name)) {
-                uniqueVoices.add(voice.name);
-                const option = document.createElement('option');
-                option.textContent = `${voice.name} (${voice.lang})`;
-                option.value = voice.name;
-                voiceSelect.appendChild(option);
-            }
-        });
-    }
-
-    // Reload voices when they are available
-    window.speechSynthesis.onvoiceschanged = loadVoices;
-
-    function updateTextDirection() {
-        const selectedLanguage = document.getElementById('language-select').value;
-        const textInput = document.getElementById('text-input');
-
-        if (selectedLanguage === 'ar-SA') {
-            textInput.style.direction = 'rtl';
-        } else {
-            textInput.style.direction = 'ltr';
-        }
-    }
-
-    function speakText() {
-        const text = document.getElementById('text-input').value;
-        const speech = new SpeechSynthesisUtterance();
-
-        // Get configuration values
-        const rate = document.getElementById('rate-slider').value;
-        const pitch = document.getElementById('pitch-slider').value;
-        const volume = document.getElementById('volume-slider').value;
-
-        // Set the text and language
-        speech.text = text;
-        speech.lang = document.getElementById('language-select').value; // Selected language
-
-        // Apply the configuration values
-        speech.rate = rate;
-        speech.pitch = pitch;
-        speech.volume = volume;
-
-        // Set the selected voice
-        const selectedVoiceName = voiceSelect.value;
-        if (selectedVoiceName) {
-            speech.voice = voices.find(voice => voice.name === selectedVoiceName);
-        }
-
-        // Speak the text
-        window.speechSynthesis.speak(speech);
-    }
-
-    // Update displayed slider values dynamically
-    document.getElementById('rate-slider').oninput = function() {
-        document.getElementById('rate-value').innerText = this.value;
-    }
-    document.getElementById('pitch-slider').oninput = function() {
-        document.getElementById('pitch-value').innerText = this.value;
-    }
-    document.getElementById('volume-slider').oninput = function() {
-        document.getElementById('volume-value').innerText = this.value;
-    }
-</script>
-
 <section style="text-align: left;padding: 5%;background-color: #002b16;">
     <div style="width: 100%;">
         <h5 style="font-size: 1.0rem;font-weight: 300;text-align: center;">
@@ -321,11 +252,9 @@
         </h5>
     </div>
 </section>
-
-
-<br>
 <footer>
     <p>Speetcho © by Walid Amriou </p>
 </footer>
+<script src="script.js"></script>
 </body>
 </html>
