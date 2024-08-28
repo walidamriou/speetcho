@@ -1,0 +1,260 @@
+<!--
+ @File index.html
+ @Author Walid Amriou
+ @Date 28/08/2024
+ @Description This file contains the main webpage of speetcho project
+ 
+
+                                        =                                
+                                +++++++++++++++++                        
+                             +++++*************+++++                     
+                           ++++*******************++++                   
+                         +++#******###########******#+++                 
+                        +++*****#####+++++++#####*****+++                
+                       +++****####+++++++++++++####****+++               
+                      +++****###++++@@@@@@@@@++++###****+++              
+                      ++****###+++@@@@@@@@@@@@@+++###****++              
+                     +++****##+++@@@@@@@@@@@@@@@+++##****+++             
+                     +++***###+++@@@@@@@@@@@@@@@+++###***+++             
+                     +++***###+++@@@@@@@@@@@@@@@+++###***+++             
+                     +++****##+++@@@@@@@@@@@@@@@+++###***+++             
+                      ++****###+++@@@@@@@@@@@@@++++###***+++             
+                      +++****###++++@@@@@@@@@++++++###***+++             
+                       +++****####+++++++++++++##++###***+++             
+                        +++*****#####*+++++*#####++###***+++             
+                         =+++******###########***++###***+++             
+                           ++++******************++###***+++             
+                             =+++++***********+++++###***+++             
+                                 +++++++++++++++ ++###***+++             
+                                                 ++###***+++             
+                                                 ++###***+++             
+                                                 ++###***+++             
+                                                 ++###***+++             
+                                                 ++###***+++             
+                                                 ++###***+++             
+                                                 ++###***+++             
+                                                 ++###***+=+              
+                                            
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Prevent search engines from indexing and following links on this page -->
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Set the character encoding to UTF-8 -->
+	<meta charset="utf-8">   
+    <!-- Configure the viewport for responsive design by sets the width of the viewport to be equal to the device 
+         width and  the initial zoom level when the page is first loaded to 1.0-->
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <!--  Description of the web page that used by search engines to display a summary or snippet of information 
+        about the webpage in search results. -->
+    <meta name="description" content="Speetcho">
+    <meta name="author" content="walidamriou">
+    <title>Speetcho</title>
+    <link rel="icon" href="../assets/img/icon/favicon.ico" sizes="any">
+
+    <!--  Add Roboto Mono from Google font using "Link" to downloads the font file while rendering the rest of the page -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace; 
+            /* display: flex; */
+            /* display: grid; */
+            /* justify-content: center; */
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        #container {
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        textarea {
+            width: calc(100% - 22px); 
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            resize: vertical;
+            overflow: auto;
+            direction: ltr;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box; 
+        }
+
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 100%;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+        }
+
+        button {
+            color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .slider-container {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .slider-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .slider-container input {
+            width: 100%;
+        }
+
+        .slider-container input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            background: #333;
+            height: 5px;
+            border-radius: 5px;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #007bff;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-container input[type="range"]:hover::-webkit-slider-thumb {
+            background-color: #0056b3;
+        }
+
+        .slider-container input[type="range"]::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #007bff;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-container input[type="range"]:hover::-moz-range-thumb {
+            background-color: #0056b3;
+        }
+        .checkbox-container {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .checkbox-container label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        footer {
+            padding: 4%;
+            background-color: #000; 
+            color:#fff
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="text-align: center;margin-top: 2%;margin-bottom: 2%;padding: 1%;" >
+        <h2 style="font-size: 2.5rem;font-weight: 700;">Speetcho</h2>
+        <h4 style="font-size: 1.0rem;font-weight: 400;">A tool to learn and practice languages by converting text into customizable speech</h4>
+    </div>
+</header> 
+
+<section style="text-align: left;padding: 5%;background-color: #00112b;">
+<div id="container">
+    <!-- Language Selection -->
+    <label for="language-select">Choose Language:</label>
+    <select id="language-select" onchange="updateTextDirection(); loadVoices()">
+        <option value="de-DE">German</option>
+        <option value="en-US">English</option>
+        <option value="fr-FR">French</option>
+        <option value="ar-SA">Arabic</option>
+        <option value="es-ES">Spanish</option>
+        <option value="it-IT">Italian</option>
+    </select>
+
+    <br>
+
+    <!-- Voice Selection -->
+    <label for="voice-select">Choose Voice Type:</label>
+    <select id="voice-select">
+        <option value="">Select a Voice</option>
+    </select>
+
+    <textarea id="text-input" rows="4" placeholder="Enter your text here"></textarea>
+    <br>
+
+    <!-- Configuration Sliders -->
+    <div class="slider-container">
+        <label for="rate-slider">Speed (Rate): <span id="rate-value">1</span></label>
+        <input type="range" id="rate-slider" min="0.5" max="2" value="1" step="0.1">
+    </div>
+    
+    <div class="slider-container">
+        <label for="pitch-slider">Pitch: <span id="pitch-value">1</span></label>
+        <input type="range" id="pitch-slider" min="0" max="2" value="1" step="0.1">
+    </div>
+    
+    <div class="slider-container">
+        <label for="volume-slider">Volume: <span id="volume-value">1</span></label>
+        <input type="range" id="volume-slider" min="0" max="1" value="1" step="0.1">
+    </div>
+    
+    <div class="checkbox-container">
+        <label for="char-by-char">Speak Character by Character:</label>
+        <input type="checkbox" id="char-by-char">
+    </div>
+    
+    <button onclick="speakText()">Speak</button>
+</div>
+</section>
+<section style="text-align: left;padding: 5%;background-color: #002b16;">
+    <div style="width: 100%;">
+        <h5 style="font-size: 1.0rem;font-weight: 300;text-align: center;">
+            This tool utilizes the Web Speech API, which is a standard feature of modern browsers. 
+            So the tool is not affected by browser compatibility issues because it uses this API for its text-to-speech capabilities. 
+            No external libraries or proprietary technologies are used beyond those provided by the browser.
+        </h5>
+    </div>
+</section>
+<footer>
+    <p>Speetcho © by Walid Amriou </p>
+</footer>
+<script src="test.js"></script>
+</body>
+</html>
