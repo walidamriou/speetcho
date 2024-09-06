@@ -8,7 +8,12 @@ function loadVoices() {
     const lang = document.getElementById('language-select').value;
 
     // Filter voices based on the selected language
-    filteredVoices = voices.filter(voice => voice.lang.startsWith(lang));
+    // filteredVoices = voices.filter(voice => voice.lang.startsWith(lang));
+    // Filter voices based on the selected language and natural voices
+    filteredVoices = voices.filter(voice => 
+        voice.lang.startsWith(lang) && 
+        voice.name.toLowerCase().includes('natural')
+    );
 
     // Populate the voice selection dropdown
     voiceSelect.innerHTML = '';
