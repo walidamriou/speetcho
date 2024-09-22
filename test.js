@@ -12,19 +12,12 @@ function loadVoices() {
 
     // Populate the voice selection dropdown
     voiceSelect.innerHTML = '';
-    if (filteredVoices.length > 0) {
-        filteredVoices.forEach(voice => {
-            const option = document.createElement('option');
-            option.textContent = voice.name;
-            option.value = voice.name;
-            voiceSelect.appendChild(option);
-        });
-    } else {
+    filteredVoices.forEach(voice => {
         const option = document.createElement('option');
-        option.textContent = 'No voices available';
-        option.disabled = true;
+        option.textContent = voice.name;
+        option.value = voice.name;
         voiceSelect.appendChild(option);
-    }
+    });
 
     // Ensure the selected voice is one of the filtered voices
     const selectedVoiceName = document.getElementById('voice-select').value;
@@ -34,14 +27,7 @@ function loadVoices() {
 }
 
 // Initialize voices on load
-function initializeVoices() {
-    if (window.speechSynthesis.onvoiceschanged !== undefined) {
-        window.speechSynthesis.onvoiceschanged = loadVoices;
-    } else {
-        // Load voices if the event is not supported
-        loadVoices();
-    }
-}
+window.speechSynthesis.onvoiceschanged = loadVoices;
 
 // Update text direction based on language selection
 function updateTextDirection() {
@@ -53,14 +39,14 @@ function updateTextDirection() {
 function speakText() {
     const text = document.getElementById('text-input').value;
     const speech = new SpeechSynthesisUtterance();
-
+    
     // Get configuration values
-    const rate = parseFloat(document.getElementById('rate-slider').value);
-    const pitch = parseFloat(document.getElementById('pitch-slider').value);
-    const volume = parseFloat(document.getElementById('volume-slider').value);
+    const rate = document.getElementById('rate-slider').value;
+    const pitch = document.getElementById('pitch-slider').value;
+    const volume = document.getElementById('volume-slider').value;
 
     // Set language
-    speech.lang = document.getElementById('language-select').value;
+    speech.lang = document.getElementById('language-select').value; 
 
     // Apply the configuration values
     speech.rate = rate;
@@ -121,6 +107,3 @@ document.getElementById('speak-button').addEventListener('click', speakText);
 document.getElementById('rate-slider').addEventListener('input', updateSliderValues);
 document.getElementById('pitch-slider').addEventListener('input', updateSliderValues);
 document.getElementById('volume-slider').addEventListener('input', updateSliderValues);
-
-// Initialize voices when the page loads
-window.addEventListener('load', initializeVoices);
